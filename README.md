@@ -11,7 +11,7 @@ This repository contains a set of unit tests for a **Java Order Price Calculator
 - **Coupon & Discount Handling**: Tests include scenarios for multiple coupon codes (SAVE20, ELITE, FREESHIP) and item-based discounts.
 
 ---
-![Test Coverage Screenshot](./Screenshot From 2025-10-18 22-02-12.png)
+![Test Coverage Screenshot](images/coverage.png)
 
 
 ## Running the Tests
