@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">code-coverage-exercise</a> &gt; <a href="index.source.html" class="el_package">com.example</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package com.example;
+
+import java.util.List;
+
+public class Main {
+
+    private Main() {
+        // کانستراکتور باید خالی باشد
+    }
+
+
+
+    public static double calculateOrderPrice(List&lt;Double&gt; itemPrices, String couponCode) {
+<span class="pc bpc" id="L14" title="1 of 4 branches missed.">        if (itemPrices == null || itemPrices.isEmpty()) {</span>
+<span class="fc" id="L15">            throw new IllegalArgumentException(&quot;Item list cannot be null or empty.&quot;);</span>
+        }
+
+<span class="nc" id="L18">        double totalPrice = 0;</span>
+        // 1. استفاده از حلقه برای محاسبه مجموع قیمت اولیه
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        for (Double price : itemPrices) {</span>
+<span class="nc bnc" id="L21" title="All 4 branches missed.">            if (price == null || price &lt;= 0) {</span>
+<span class="nc" id="L22">                throw new IllegalArgumentException(&quot;All item prices must be positive.&quot;);</span>
+            }
+<span class="nc" id="L24">            totalPrice += price;</span>
+<span class="nc" id="L25">        }</span>
+
+<span class="nc" id="L27">        int quantity = itemPrices.size();</span>
+
+        // 2. تخفیف
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        if (quantity &gt;= 20) {</span>
+<span class="nc" id="L31">            totalPrice *= 0.85; // تخفیف 15% برای ۲۰ آیتم یا بیشتر</span>
+<span class="nc bnc" id="L32" title="All 2 branches missed.">        } else if (quantity &gt;= 10) {</span>
+<span class="nc" id="L33">            totalPrice *= 0.90; // تخفیف 10% برای ۱۰ تا ۱۹ آیتم</span>
+        }
+
+        // 3. کدهای تخفیف
+<span class="nc bnc" id="L37" title="All 4 branches missed.">        if (couponCode != null &amp;&amp; !couponCode.isEmpty()) {</span>
+<span class="nc bnc" id="L38" title="All 4 branches missed.">            switch (couponCode) {</span>
+                case &quot;SAVE20&quot;:
+<span class="nc" id="L40">                    totalPrice *= 0.80; // ۲۰٪ تخفیف</span>
+<span class="nc" id="L41">                    break;</span>
+                case &quot;ELITE&quot;:
+                    // اگر قیمت بعد از تخفیف تعدادی هنوز بالای ۱۰۰۰ باشد
+<span class="nc bnc" id="L44" title="All 2 branches missed.">                    if (totalPrice &gt; 1000) {</span>
+<span class="nc" id="L45">                        totalPrice -= 100;</span>
+                    }
+                    break;
+                case &quot;FREESHIP&quot;:
+                    // اگر قیمت زیر ۵۰ باشد هزینه ارسال اضافه می‌شود، در غیر این صورت رایگان است
+<span class="nc bnc" id="L50" title="All 2 branches missed.">                    if (totalPrice &lt; 50) {</span>
+<span class="nc" id="L51">                        totalPrice += 15;</span>
+                    }
+                    break;
+            }
+        }
+        
+<span class="nc" id="L57">        return totalPrice;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
