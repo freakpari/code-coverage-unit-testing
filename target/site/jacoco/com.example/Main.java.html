@@ -8,53 +8,51 @@ public class Main {
         // کانستراکتور باید خالی باشد
     }
 
-
-
     public static double calculateOrderPrice(List&lt;Double&gt; itemPrices, String couponCode) {
-<span class="pc bpc" id="L14" title="1 of 4 branches missed.">        if (itemPrices == null || itemPrices.isEmpty()) {</span>
-<span class="fc" id="L15">            throw new IllegalArgumentException(&quot;Item list cannot be null or empty.&quot;);</span>
+<span class="fc bfc" id="L12" title="All 4 branches covered.">        if (itemPrices == null || itemPrices.isEmpty()) {</span>
+<span class="fc" id="L13">            throw new IllegalArgumentException(&quot;Item list cannot be null or empty.&quot;);</span>
         }
 
-<span class="nc" id="L18">        double totalPrice = 0;</span>
+<span class="fc" id="L16">        double totalPrice = 0;</span>
         // 1. استفاده از حلقه برای محاسبه مجموع قیمت اولیه
-<span class="nc bnc" id="L20" title="All 2 branches missed.">        for (Double price : itemPrices) {</span>
-<span class="nc bnc" id="L21" title="All 4 branches missed.">            if (price == null || price &lt;= 0) {</span>
-<span class="nc" id="L22">                throw new IllegalArgumentException(&quot;All item prices must be positive.&quot;);</span>
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        for (Double price : itemPrices) {</span>
+<span class="fc bfc" id="L19" title="All 4 branches covered.">            if (price == null || price &lt;= 0) {</span>
+<span class="fc" id="L20">                throw new IllegalArgumentException(&quot;All item prices must be positive.&quot;);</span>
             }
-<span class="nc" id="L24">            totalPrice += price;</span>
-<span class="nc" id="L25">        }</span>
+<span class="fc" id="L22">            totalPrice += price;</span>
+<span class="fc" id="L23">        }</span>
 
-<span class="nc" id="L27">        int quantity = itemPrices.size();</span>
+<span class="fc" id="L25">        int quantity = itemPrices.size();</span>
 
         // 2. تخفیف
-<span class="nc bnc" id="L30" title="All 2 branches missed.">        if (quantity &gt;= 20) {</span>
-<span class="nc" id="L31">            totalPrice *= 0.85; // تخفیف 15% برای ۲۰ آیتم یا بیشتر</span>
-<span class="nc bnc" id="L32" title="All 2 branches missed.">        } else if (quantity &gt;= 10) {</span>
-<span class="nc" id="L33">            totalPrice *= 0.90; // تخفیف 10% برای ۱۰ تا ۱۹ آیتم</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (quantity &gt;= 20) {</span>
+<span class="fc" id="L29">            totalPrice *= 0.85; // تخفیف 15% برای ۲۰ آیتم یا بیشتر</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        } else if (quantity &gt;= 10) {</span>
+<span class="fc" id="L31">            totalPrice *= 0.90; // تخفیف 10% برای ۱۰ تا ۱۹ آیتم</span>
         }
 
         // 3. کدهای تخفیف
-<span class="nc bnc" id="L37" title="All 4 branches missed.">        if (couponCode != null &amp;&amp; !couponCode.isEmpty()) {</span>
-<span class="nc bnc" id="L38" title="All 4 branches missed.">            switch (couponCode) {</span>
+<span class="fc bfc" id="L35" title="All 4 branches covered.">        if (couponCode != null &amp;&amp; !couponCode.isEmpty()) {</span>
+<span class="fc bfc" id="L36" title="All 4 branches covered.">            switch (couponCode) {</span>
                 case &quot;SAVE20&quot;:
-<span class="nc" id="L40">                    totalPrice *= 0.80; // ۲۰٪ تخفیف</span>
-<span class="nc" id="L41">                    break;</span>
+<span class="fc" id="L38">                    totalPrice *= 0.80; // ۲۰٪ تخفیف</span>
+<span class="fc" id="L39">                    break;</span>
                 case &quot;ELITE&quot;:
                     // اگر قیمت بعد از تخفیف تعدادی هنوز بالای ۱۰۰۰ باشد
-<span class="nc bnc" id="L44" title="All 2 branches missed.">                    if (totalPrice &gt; 1000) {</span>
-<span class="nc" id="L45">                        totalPrice -= 100;</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">                    if (totalPrice &gt; 1000) {</span>
+<span class="fc" id="L43">                        totalPrice -= 100;</span>
                     }
                     break;
                 case &quot;FREESHIP&quot;:
                     // اگر قیمت زیر ۵۰ باشد هزینه ارسال اضافه می‌شود، در غیر این صورت رایگان است
-<span class="nc bnc" id="L50" title="All 2 branches missed.">                    if (totalPrice &lt; 50) {</span>
-<span class="nc" id="L51">                        totalPrice += 15;</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">                    if (totalPrice &lt; 50) {</span>
+<span class="fc" id="L49">                        totalPrice += 15;</span>
                     }
                     break;
             }
         }
         
-<span class="nc" id="L57">        return totalPrice;</span>
+<span class="fc" id="L55">        return totalPrice;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

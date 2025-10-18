@@ -9,5 +9,8 @@
         <module name="code-coverage-exercise" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="code-coverage-exercise" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
