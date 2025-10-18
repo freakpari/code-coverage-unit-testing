@@ -8,8 +8,6 @@ public class Main {
         // کانستراکتور باید خالی باشد
     }
 
-
-
     public static double calculateOrderPrice(List<Double> itemPrices, String couponCode) {
         if (itemPrices == null || itemPrices.isEmpty()) {
             throw new IllegalArgumentException("Item list cannot be null or empty.");
