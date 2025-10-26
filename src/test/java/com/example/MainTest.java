@@ -96,6 +96,6 @@ public class MainTest {
     void unknownCouponCode() {
         List<Double> prices = Arrays.asList(50.0, 50.0);
         double result = Main.calculateOrderPrice(prices, "INVALIDCODE");
-        assertEquals(100.0, result, 0.001, "کد نامعتبر نباید تغییری بدهد");
+        assertEquals(100.0, result, 0.001);
     }
 }
